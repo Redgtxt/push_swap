@@ -59,17 +59,18 @@ void	check_duplicate(t_node *head, int num)
 		temp = temp->next;
 	}
 }
-void	add_to_list(t_node **head, int content)
+void add_to_list(t_node **head, int content, int index)
 {
-	t_node *new_node = ft_newnode(content);
-	t_node *temp = *head;
+    t_node *new_node = ft_newnode(content, index); 
+    t_node *temp = *head;
 
-	if (!(*head))
-		*head = new_node;
-	else
-	{
-		while (temp->next)
-			temp = temp->next;
-		temp->next = new_node;
-	}
+    if (!(*head))
+        *head = new_node;
+    else
+    {
+        while (temp->next)
+            temp = temp->next;
+        temp->next = new_node;
+    }
 }
+
