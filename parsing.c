@@ -1,25 +1,27 @@
 #include "push_swap.h"
 
-//Verifica se tem alguma letra ATENCAO QUE ELE NAO VE MULTIPLOS SINAIS
+//Verifica se tem alguma letra 
 int	is_digit_str(char *str)
 {
-	int	i;
+	int i;
 
-	i = 0;
-	if (str[i] == '-' || str[i] == '+')
+	i= 0;
+	if (str[i] == '-' || str[i] == '+') 
+	{
+		if (str[i + 1] == '-' || str[i + 1] == '+') 
+			write_error();
 		i++;
+	}
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
-		{
-			return (0);
-		}
+			write_error();
 		i++;
 	}
 	return (1);
 }
-//continua sem checar sinais
-int safe_atoi(char *str)
+//Atoi diferenciado ehehehe
+int ft_safe_atoi(char *str)
 {
 	int	i;
 	int	neg;
@@ -46,8 +48,28 @@ int safe_atoi(char *str)
 	return (num * neg);
 }
 
-int main(void)
+void	check_duplicate(t_node *head, int num)
 {
-	//printf("%d",is_digit_str("+232"));
-	printf("%d",safe_atoi("++232"));
+	t_node *temp = head;
+
+	while (temp)
+	{
+		if (temp->data == num)
+			write_error();
+		temp = temp->next;
+	}
+}
+void	add_to_list(t_node **head, int content)
+{
+	t_node *new_node = ft_newnode(content);
+	t_node *temp = *head;
+
+	if (!(*head))
+		*head = new_node;
+	else
+	{
+		while (temp->next)
+			temp = temp->next;
+		temp->next = new_node;
+	}
 }
