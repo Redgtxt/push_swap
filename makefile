@@ -1,6 +1,5 @@
 NAME = push_swap
-BONUS = checker
-SRC = push_swap.c
+SRC = push_swap.c parsing.c
 LIBFTDIR = ./libft
 LIBFT = $(LIBFTDIR)/libft.a
 OBJDIR = ./obj
