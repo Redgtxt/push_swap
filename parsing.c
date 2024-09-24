@@ -41,7 +41,7 @@ int ft_safe_atoi(char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		num = (str[i] - '0') + (num * 10);
-		if (num * neg > INT_MAX || num * neg < INT_MIN)
+		if (num * neg > 2147483647 || num * neg < -2147483647)
 			write_error();
 		i++;
 	}
