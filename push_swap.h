@@ -16,5 +16,6 @@ int	is_digit_str(char *str);
 int ft_safe_atoi(char *str);
 void	check_duplicate(t_node *head, int num);
 void add_to_list(t_node **head, int content, int index);
+void	argv_convert_builder(int argc, char *argv[], t_node **head);
 #endif
 
