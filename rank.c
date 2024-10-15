@@ -51,3 +51,26 @@ void	assign_ranks(t_node *head)
 		current = current->next;
 	}
 }
+void	assign_ranks_to_stackA(t_node *stackA, t_node *stackSort)
+{
+	t_node	*tempA;
+	t_node	*tempSort;
+
+	tempA = stackA;
+	while (tempA)
+	{
+		tempSort = stackSort;
+		while (tempSort)
+		{
+			// Compara os valores de 'data' das duas listas
+			if (tempA->data == tempSort->data)
+			{
+				// Copia o rank de stackSort para stackA
+				tempA->rank = tempSort->rank;
+				break;
+			}
+			tempSort = tempSort->next;
+		}
+		tempA = tempA->next;
+	}
+}
