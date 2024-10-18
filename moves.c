@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-//Swap the first 2 elements at the top of stack a
+// Swap the first 2 elements at the top of stack a
 void	sa(t_node **head)
 {
 	t_node	*first;
@@ -13,9 +13,8 @@ void	sa(t_node **head)
 	first->next = second->next;
 	second->next = first;
 	*head = second;
-
 }
-//swap the first 2 elements at the top of stack b
+// swap the first 2 elements at the top of stack b
 void	sb(t_node **head)
 {
 	t_node	*first;
@@ -29,12 +28,11 @@ void	sb(t_node **head)
 	second->next = first;
 	*head = second;
 }
-//Take the first element at the top of b and put it at the top of a
+// Take the first element at the top of b and put it at the top of a
 void	pa(t_node **stack_a, t_node **stack_b)
 {
 	t_node	*temp;
 
-	// Verifica se a stack B está vazia
 	if (*stack_b == NULL)
 		return ;
 	// Aponta o topo de B para temp
@@ -46,12 +44,11 @@ void	pa(t_node **stack_a, t_node **stack_b)
 	*stack_a = temp;
 }
 
-//Take the first element at the top of a and put it at the top of b.
+// Take the first element at the top of a and put it at the top of b.
 void	pb(t_node **stack_a, t_node **stack_b)
 {
 	t_node	*temp;
 
-	// Verifica se a stack A está vazia
 	if (*stack_a == NULL)
 		return ;
 	// Aponta o topo de A para temp
@@ -61,4 +58,24 @@ void	pb(t_node **stack_a, t_node **stack_b)
 	// Insere temp no topo de B
 	temp->next = *stack_b;
 	*stack_b = temp;
+}
+void	rotate_a(t_node **head)
+{
+	t_node	*first;
+	t_node	*last;
+	//t_node	*temp;
+
+	if (!(*head) || !(*head)->next)
+		return ;
+	first = *head;
+	// Avança o head para o próximo node (o segundo elemento se torna o novo head)
+	*head = (*head)->next;
+	// Encontrar o último node da lista
+	last = *head;
+	while (last->next)
+		last = last->next;
+	// O último node agora aponta para o primeiro
+	last->next = first;
+	// O antigo primeiro node (agora no final) não deve apontar para ninguém
+	first->next = NULL;
 }

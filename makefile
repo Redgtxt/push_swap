@@ -1,5 +1,5 @@
 NAME = push_swap
-SRC = push_swap.c parsing.c  moves.c rank.c utils.c
+SRC = push_swap.c parsing.c  moves.c rank.c utils.c more_utils.c
 LIBFTDIR = ./libft
 LIBFT = $(LIBFTDIR)/libft.a
 OBJDIR = ./obj

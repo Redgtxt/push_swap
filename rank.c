@@ -62,7 +62,7 @@ void	assign_ranks_to_stackA(t_node *stackA, t_node *stackSort)
 		tempSort = stackSort;
 		while (tempSort)
 		{
-			// Compara os valores de 'data' das duas listas
+			// Compara os valores de data das duas listas
 			if (tempA->data == tempSort->data)
 			{
 				// Copia o rank de stackSort para stackA

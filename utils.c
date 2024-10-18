@@ -30,7 +30,6 @@ void	print_stack(t_node *stack)
 	}
 
 	temp = stack;
-	ft_printf("Conteúdo da stack:\n");
 	while (temp)
 	{
 		ft_printf("Node index: [%d], Data: %d\n", temp->index, temp->data);
@@ -49,7 +48,6 @@ void	print_stack_ranks(t_node *stack)
 	}
 
 	temp = stack;
-	ft_printf("Conteúdo da stack Rank:\n");
 	while (temp)
 	{
 		ft_printf("Node index: [%d], Data: %d, Rank: %d\n", temp->index, temp->data,temp->rank);
@@ -103,6 +101,4 @@ void	copy_stack(t_node *src, t_node **dest)
 
 		temp = temp->next;
 	}
-
-	ft_printf("A stack foi copiada com sucesso.\n");
 }

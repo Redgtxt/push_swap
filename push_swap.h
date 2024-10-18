@@ -14,6 +14,7 @@ typedef struct s_node
 //Debug
 void	print_stack(t_node *stack);
 void	print_stack_ranks(t_node *stack);
+
 //Input arguments
 void				write_error(void);
 int					is_digit_str(char *str);
@@ -28,15 +29,18 @@ t_node	*create_stackA(int argc, char *argv[]);
 t_node	*create_empty_stack(void);
 void	move_stack(t_node **src, t_node **dest);
 void	copy_stack(t_node *src, t_node **dest);
+void	deletlist(t_node *node);
 
 // Funcoes buble sort && Rank
 void				swap_nodes(t_node *a, t_node *b);
 void				assign_ranks(t_node *head);
 void				sort_list(t_node *head);
 void	assign_ranks_to_stackA(t_node *stackA, t_node *stackSort);
-// mvoes
+
+// moves
 void				sa(t_node **head);
 void				sb(t_node **head);
 void	pa(t_node **stack_a, t_node **stack_b);
 void	pb(t_node **stack_a, t_node **stack_b);
+void	rotate_a(t_node **head);
 #endif
