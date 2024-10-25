@@ -23,29 +23,31 @@ t_node	*create_empty_stack(void)
 
 int	main(int argc, char *argv[])
 {
-	t_node	*head;
-	t_node	*stackb;
+	t_node	*stackA;
+	t_node	*stackB;
 	t_node	*stackSort;
 
-	head = create_stackA(argc, argv);
-	stackb = create_empty_stack();
+	stackA = create_stackA(argc, argv);
+	stackB = create_empty_stack();
 	stackSort = create_empty_stack();
 	// Transfere os nodes de A para Sort (sem alterar a ordem)
-	copy_stack(head, &stackSort);
+	copy_stack(stackA, &stackSort);
 	// Ordena e atribui ranks na stackSort
 	assign_ranks(stackSort);
-	printf("-------------- Stack Sort --------------\n");
-	print_stack_ranks(stackSort);
 	// Copia os ranks da stackSort para a stackA (sem alterar a ordem de stackA)
-	assign_ranks_to_stackA(head, stackSort);
+	assign_ranks_to_stackA(stackA, stackSort);
 	// Vou apagar a stackSort
 	deletlist(stackSort);
 	// Lista apos atribuição dos ranks
 	printf("-------------- Stack A After --------------\n");
-	print_stack_ranks(head);
+	print_stack_ranks(stackA);
 	printf("-------------- RA Test--------------\n");
-	rotate_a(&head);
+	pb(&stackA,&stackB);
+	pb(&stackA,&stackB);
+	pb(&stackA,&stackB);
 	printf("-------------- Stack A--------------\n");
-	print_stack_ranks(head);
+	print_stack_ranks(stackA);
+	printf("-------------- Stack B--------------\n");
+	print_stack_ranks(stackB);
 	return (0);
 }

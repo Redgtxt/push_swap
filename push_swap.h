@@ -42,5 +42,8 @@ void				sa(t_node **head);
 void				sb(t_node **head);
 void	pa(t_node **stack_a, t_node **stack_b);
 void	pb(t_node **stack_a, t_node **stack_b);
-void	rotate_a(t_node **head);
+void	ra(t_node **head);
+void	rb(t_node **head);
+void	rra(t_node **head);
+void	rrb(t_node **head);
 #endif
