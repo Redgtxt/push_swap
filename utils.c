@@ -15,6 +15,7 @@ t_node	*ft_newnode(int content, int index)
 		return (NULL);
 	node->data = content;
 	node->index = index;
+	node->chunk = -1; 
 	node->next = NULL;
 	return (node);
 }

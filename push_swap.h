@@ -9,11 +9,13 @@ typedef struct s_node
 	int				index;
 	int				rank;
 	struct s_node	*next;
+	int chunk;
 }					t_node;
 
 //Debug
 void	print_stack(t_node *stack);
 void	print_stack_ranks(t_node *stack);
+void	print_stack_chunks(t_node *stack);
 
 //Input arguments
 void				write_error(void);
@@ -30,12 +32,18 @@ t_node	*create_empty_stack(void);
 void	move_stack(t_node **src, t_node **dest);
 void	copy_stack(t_node *src, t_node **dest);
 void	deletlist(t_node *node);
+int	stacklen(t_node *head);
 
 // Funcoes buble sort && Rank
 void				swap_nodes(t_node *a, t_node *b);
 void				assign_ranks(t_node *head);
 void				sort_list(t_node *head);
 void	assign_ranks_to_stackA(t_node *stackA, t_node *stackSort);
+
+
+//Algoritm Chunck sorting
+int calculate_chunks(int num_elements);
+void assign_chunks(t_node *head);
 
 // moves
 void				sa(t_node **head);

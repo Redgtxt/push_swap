@@ -8,8 +8,8 @@ t_node	*create_stackA(int argc, char *argv[])
 	if (argc - 1 <= 0)
 		write_error();
 	argv_convert_builder(argc, argv, &head);
-	ft_printf("Antes da ordenação e atribuição de ranks:\n");
-	print_stack(head);
+	//ft_printf("Antes da ordenação e atribuição de ranks:\n");
+	//print_stack(head);
 	return (head);
 }
 
@@ -38,18 +38,17 @@ int	main(int argc, char *argv[])
 	assign_ranks_to_stackA(stackA, stackSort);
 	// Vou apagar a stackSort
 	deletlist(stackSort);
-	// Lista apos atribuição dos ranks
-	printf("-------------- Stack A After --------------\n");
-	print_stack_ranks(stackA);
-	printf("-------------- RA Test--------------\n");
-	pb(&stackA,&stackB);
-	pb(&stackA,&stackB);
-	pb(&stackA,&stackB);
+
+	//Vou dividir os meus elementos em grupos
+	assign_chunks(stackA);
+
+
 	printf("-------------- Stack A--------------\n");
 	print_stack_ranks(stackA);
 	printf("-------------- Stack B--------------\n");
 	print_stack_ranks(stackB);
-
+	printf("--------------CHUNKS--------------\n");
+	print_stack_chunks(stackA);
 	deletlist(stackA);
 	deletlist(stackB);
 	return (0);
