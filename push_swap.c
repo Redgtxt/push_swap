@@ -42,14 +42,17 @@ int	main(int argc, char *argv[])
 	//Vou dividir os meus elementos em grupos
 	assign_chunks(stackA);
 
+	move_current_chunk_to_stackB(&stackA,&stackB,0);
 
 	printf("-------------- Stack A--------------\n");
 	print_stack_ranks(stackA);
 	printf("-------------- Stack B--------------\n");
-	print_stack_ranks(stackB);
-	printf("--------------CHUNKS--------------\n");
+	print_stack_chunks(stackB);
+	printf("--------------Stack A--------------\n");
 	print_stack_chunks(stackA);
+	//print_stack_chunks(stackB);
 	deletlist(stackA);
 	deletlist(stackB);
+
 	return (0);
 }

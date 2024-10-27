@@ -49,3 +49,29 @@ void assign_chunks(t_node *head)
         current_count++;
     }
 }
+
+void move_current_chunk_to_stackB(t_node **stackA, t_node **stackB, int current_chunk) {
+    t_node *temp = *stackA;
+    int moved_count = 0;
+
+    // Conte quantos elementos no chunk atual existem em StackA
+    while (temp) {
+        if (temp->chunk == current_chunk) {
+            moved_count++;
+        }
+        temp = temp->next;
+    }
+
+    // Mova elementos do chunk atual de StackA para StackB
+    while (moved_count > 0) {
+        if ((*stackA)->chunk == current_chunk) {
+            pb(stackA, stackB);  // move o elemento do chunk atual para StackB
+            moved_count--;
+        } else {
+            ra(stackA);  // Move para o fim de StackA caso não pertença ao chunk atual
+        }
+    }
+}
+
+
+

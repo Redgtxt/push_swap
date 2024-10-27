@@ -44,6 +44,11 @@ void	assign_ranks_to_stackA(t_node *stackA, t_node *stackSort);
 //Algoritm Chunck sorting
 int calculate_chunks(int num_elements);
 void assign_chunks(t_node *head);
+void   move_current_chunk_to_stackB(t_node **stackA, t_node **stackB, int current_chunk);
+//void sort_stackB_and_push_to_stackA(t_node **stackA, t_node **stackB);
+int find_max_position(t_node *stackB);
+int find_min_rank(t_node *stackA);
+void transfer_chunk_to_stackA(t_node **stackA, t_node **stackB);
 
 // moves
 void				sa(t_node **head);
