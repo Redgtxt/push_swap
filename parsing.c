@@ -47,7 +47,6 @@ int	ft_safe_atoi(char *str)
 	}
 	return (num * neg);
 }
-
 void	argv_convert_builder(int argc, char *argv[], t_node **head)
 {
 	int		i;
@@ -69,10 +68,11 @@ void	argv_convert_builder(int argc, char *argv[], t_node **head)
 			num = ft_safe_atoi(split_argv[j]);
 			check_duplicate(*head, num);
 			add_to_list(head, num, index);
+			free(split_argv[j]);
 			j++;
 			index++;
 		}
-		free(split_argv);
+		free(split_argv);  
 		i++;
 	}
 }

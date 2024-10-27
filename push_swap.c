@@ -49,5 +49,8 @@ int	main(int argc, char *argv[])
 	print_stack_ranks(stackA);
 	printf("-------------- Stack B--------------\n");
 	print_stack_ranks(stackB);
+
+	deletlist(stackA);
+	deletlist(stackB);
 	return (0);
 }
