@@ -37,3 +37,16 @@ void	print_stack_chunks(t_node *stack)
 		temp = temp->next;
 	}
 }
+
+int is_sorted(t_node *stackA) 
+{
+    while (stackA && stackA->next)
+	 {
+        if (stackA->rank > stackA->next->rank) 
+		{
+            return 0;  
+        }
+        stackA = stackA->next;
+    }
+    return 1; 
+}

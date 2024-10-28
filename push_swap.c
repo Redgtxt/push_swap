@@ -8,8 +8,6 @@ t_node	*create_stackA(int argc, char *argv[])
 	if (argc - 1 <= 0)
 		write_error();
 	argv_convert_builder(argc, argv, &head);
-	//ft_printf("Antes da ordenação e atribuição de ranks:\n");
-	//print_stack(head);
 	return (head);
 }
 
@@ -42,15 +40,24 @@ int	main(int argc, char *argv[])
 	//Vou dividir os meus elementos em grupos
 	assign_chunks(stackA);
 
+	move_current_chunk_to_stackB(&stackA,&stackB,2);
+	transfer_chunk_to_stackA(&stackA,&stackB);
+	
+	move_current_chunk_to_stackB(&stackA,&stackB,1);
+	transfer_chunk_to_stackA(&stackA,&stackB);
+	
 	move_current_chunk_to_stackB(&stackA,&stackB,0);
-
+	transfer_chunk_to_stackA(&stackA,&stackB);
 	printf("-------------- Stack A--------------\n");
 	print_stack_ranks(stackA);
 	printf("-------------- Stack B--------------\n");
 	print_stack_chunks(stackB);
 	printf("--------------Stack A--------------\n");
 	print_stack_chunks(stackA);
-	//print_stack_chunks(stackB);
+	if(is_sorted(stackA))
+	{
+		printf("Estamos em um bom caminho\n");
+	}
 	deletlist(stackA);
 	deletlist(stackB);
 
