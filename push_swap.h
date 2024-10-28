@@ -58,4 +58,6 @@ void	ra(t_node **head);
 void	rb(t_node **head);
 void	rra(t_node **head);
 void	rrb(t_node **head);
+
+
 #endif

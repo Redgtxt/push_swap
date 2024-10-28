@@ -38,15 +38,12 @@ void	print_stack_chunks(t_node *stack)
 	}
 }
 
-int is_sorted(t_node *stackA) 
-{
-    while (stackA && stackA->next)
-	 {
-        if (stackA->rank > stackA->next->rank) 
-		{
-            return 0;  
+int is_sorted(t_node *stackA) {
+    while (stackA && stackA->next) {
+        if (stackA->rank > stackA->next->rank) {
+            return 0;  // Retorna 0 se não estiver ordenada
         }
         stackA = stackA->next;
     }
-    return 1; 
+    return 1;  // Retorna 1 se estiver ordenada
 }

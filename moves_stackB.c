@@ -29,6 +29,7 @@ void	pb(t_node **stack_a, t_node **stack_b)
 	// Insere temp no topo de B
 	temp->next = *stack_b;
 	*stack_b = temp;
+  printf("pb\n");
 }
 
 //Rotate the elements, the elemento on top go to the bottom
@@ -49,6 +50,7 @@ void	rb(t_node **head)
 	// O último node agora aponta para o primeiro
 	last->next = first;
 	first->next = NULL;
+	    printf("rb\n");
 }
 // The Last element becomes the first one(StackB)
 void	rrb(t_node **head)
@@ -69,4 +71,5 @@ void	rrb(t_node **head)
 	*head = last;
 	// O penúltimo node agora é o último, então aponta para NULL
 	second_last->next = NULL;
+    printf("rrb\n");
 }

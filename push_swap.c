@@ -18,48 +18,45 @@ t_node	*create_empty_stack(void)
 	stackb = NULL;
 	return (stackb);
 }
-
-int	main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
-	t_node	*stackA;
-	t_node	*stackB;
-	t_node	*stackSort;
+    t_node  *stackA;
+    t_node  *stackB;
+    t_node  *stackSort;
+    int     num_elements;
+    int     chunks;
 
-	stackA = create_stackA(argc, argv);
-	stackB = create_empty_stack();
-	stackSort = create_empty_stack();
-	// Transfere os nodes de A para Sort (sem alterar a ordem)
-	copy_stack(stackA, &stackSort);
-	// Ordena e atribui ranks na stackSort
-	assign_ranks(stackSort);
-	// Copia os ranks da stackSort para a stackA (sem alterar a ordem de stackA)
-	assign_ranks_to_stackA(stackA, stackSort);
-	// Vou apagar a stackSort
-	deletlist(stackSort);
+    stackA = create_stackA(argc, argv);
+    stackB = create_empty_stack();
+    stackSort = create_empty_stack();
+    num_elements = stacklen(stackA);
+    chunks = calculate_chunks(num_elements) - 1;
 
-	//Vou dividir os meus elementos em grupos
-	assign_chunks(stackA);
+    // Copia e ordena os ranks de StackA em StackSort
+    copy_stack(stackA, &stackSort);
+    assign_ranks(stackSort);
+    assign_ranks_to_stackA(stackA, stackSort);
+    deletlist(stackSort);
 
-	move_current_chunk_to_stackB(&stackA,&stackB,2);
-	transfer_chunk_to_stackA(&stackA,&stackB);
-	
-	move_current_chunk_to_stackB(&stackA,&stackB,1);
-	transfer_chunk_to_stackA(&stackA,&stackB);
-	
-	move_current_chunk_to_stackB(&stackA,&stackB,0);
-	transfer_chunk_to_stackA(&stackA,&stackB);
-	printf("-------------- Stack A--------------\n");
-	print_stack_ranks(stackA);
-	printf("-------------- Stack B--------------\n");
-	print_stack_chunks(stackB);
-	printf("--------------Stack A--------------\n");
-	print_stack_chunks(stackA);
-	if(is_sorted(stackA))
-	{
-		printf("Estamos em um bom caminho\n");
-	}
-	deletlist(stackA);
-	deletlist(stackB);
+    // Divide os elementos em grupos (chunks)
+    assign_chunks(stackA);
 
-	return (0);
+    // Loop para processar e mover cada chunk para StackB e então de volta para StackA
+    while (!is_sorted(stackA) && chunks >= 0) {
+        move_current_chunk_to_stackB(&stackA, &stackB, chunks);
+        transfer_chunk_to_stackA(&stackA, &stackB);
+        chunks--;
+    }
+
+    // Exibe o estado final das pilhas
+    printf("-------------- Stack A--------------\n");
+    print_stack_ranks(stackA);
+    printf("-------------- Stack B--------------\n");
+    print_stack_chunks(stackB);
+
+
+    deletlist(stackA);
+    deletlist(stackB);
+
+    return (0);
 }
