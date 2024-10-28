@@ -43,8 +43,8 @@ int main(int argc, char *argv[])
 
     // Loop para processar e mover cada chunk para StackB e então de volta para StackA
     while (!is_sorted(stackA) && chunks >= 0) {
-        move_current_chunk_to_stackB(&stackA, &stackB, chunks);
-        transfer_chunk_to_stackA(&stackA, &stackB);
+       move_current_chunk_to_stackB(&stackA, &stackB, chunks);
+        transfer_chunks_to_stackA(&stackA, &stackB);
         chunks--;
     }
 

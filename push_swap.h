@@ -46,7 +46,9 @@ int calculate_chunks(int num_elements);
 void assign_chunks(t_node *head);
 void   move_current_chunk_to_stackB(t_node **stackA, t_node **stackB, int current_chunk);
 int find_max_position(t_node *stackB);
-void transfer_chunk_to_stackA(t_node **stackA, t_node **stackB);
+//void sort_chunk(t_node **stackB);
+void transfer_chunks_to_stackA(t_node **stackA, t_node **stackB);
+//void transfer_chunk_to_stackA(t_node **stackA, t_node **stackB);
 int is_sorted(t_node *stackA);
 
 // moves

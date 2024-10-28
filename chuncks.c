@@ -91,6 +91,7 @@ int find_max_position(t_node *stackB)
 }
 
 // Função para transferir um chunk ordenado de StackB para StackA
+/*
 void transfer_chunk_to_stackA(t_node **stackA, t_node **stackB) 
 {
     while (*stackB) {
@@ -110,5 +111,32 @@ void transfer_chunk_to_stackA(t_node **stackA, t_node **stackB)
 
         // Move o maior elemento do topo de StackB para StackA
         pa(stackA, stackB);
+    }
+}
+*/
+void sort_chunk(t_node **stackA, t_node **stackB) {
+    while (*stackB) {
+        // Encontrar o maior elemento em StackB
+        int max_position = find_max_position(*stackB);
+        int stackB_len = stacklen(*stackB);
+
+        // Ajustar o maior elemento para o topo de StackB
+        if (max_position <= stackB_len / 2) {
+            while (max_position-- > 0)
+                rb(stackB);  // Roda StackB para o topo
+        } else {
+            while (max_position++ < stackB_len)
+                rrb(stackB); // Roda reverso StackB para o topo
+        }
+
+        // Move o maior elemento do topo de StackB para StackA
+        pa(stackA, stackB);
+    }
+}
+
+// Função para transferir chunks de StackB para StackA
+void transfer_chunks_to_stackA(t_node **stackA, t_node **stackB) {
+    while (*stackB) {
+        sort_chunk(stackA, stackB); // Ordena e transfere o chunk para StackA
     }
 }
