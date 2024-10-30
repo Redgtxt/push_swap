@@ -18,45 +18,44 @@ t_node	*create_empty_stack(void)
 	stackb = NULL;
 	return (stackb);
 }
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-    t_node  *stackA;
-    t_node  *stackB;
-    t_node  *stackSort;
-    int     num_elements;
-    int     chunks;
+	t_node	*stackA;
+	t_node	*stackB;
+	t_node	*stackSort;
+	int		num_elements;
+	int		chunks;
+    int i;
+	stackA = create_stackA(argc, argv);
+	stackB = create_empty_stack();
+	stackSort = create_empty_stack();
+	num_elements = stacklen(stackA);
+	chunks = calculate_chunks(num_elements) - 1;
+	// Copia e ordena os ranks de StackA em StackSort
+	copy_stack(stackA, &stackSort);
+	assign_ranks(stackSort);
+	assign_ranks_to_stackA(stackA, stackSort);
+	deletlist(stackSort);
+	// Divide os elementos em grupos (chunks)
+	assign_chunks(stackA);
 
-    stackA = create_stackA(argc, argv);
-    stackB = create_empty_stack();
-    stackSort = create_empty_stack();
-    num_elements = stacklen(stackA);
-    chunks = calculate_chunks(num_elements) - 1;
+    print_stack_chunks(stackA);
+    
+    i = 0;
+    while (i <= chunks)
+    {
 
-    // Copia e ordena os ranks de StackA em StackSort
-    copy_stack(stackA, &stackSort);
-    assign_ranks(stackSort);
-    assign_ranks_to_stackA(stackA, stackSort);
-    deletlist(stackSort);
-
-    // Divide os elementos em grupos (chunks)
-    assign_chunks(stackA);
-
-    // Loop para processar e mover cada chunk para StackB e então de volta para StackA
-    while (!is_sorted(stackA) && chunks >= 0) {
-       move_current_chunk_to_stackB(&stackA, &stackB, chunks);
-        transfer_chunks_to_stackA(&stackA, &stackB);
-        chunks--;
+    move_current_chunk_to_stackB(&stackA,&stackB,i);
+    i++;
     }
 
-    // Exibe o estado final das pilhas
-    printf("-------------- Stack A--------------\n");
-    print_stack_ranks(stackA);
-    printf("-------------- Stack B--------------\n");
-    print_stack_chunks(stackB);
-
-
-    deletlist(stackA);
-    deletlist(stackB);
-
-    return (0);
+	// Loop para processar e mover cada chunk para StackB e então de volta para StackA
+	// Exibe o estado final das pilhas
+	 printf("-------------- Stack A--------------\n");
+	 print_stack_chunks(stackA);
+	printf("-------------- Stack B--------------\n");
+	 print_stack_chunks(stackB);
+	deletlist(stackA);
+	deletlist(stackB);
+	return (0);
 }
