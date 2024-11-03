@@ -2,6 +2,7 @@
 # define PUSH_SWAP_H
 # include "libft/libft.h"
 # include <stdio.h>
+#include <stdlib.h>
 
 typedef struct s_node
 {
@@ -33,6 +34,8 @@ void	move_stack(t_node **src, t_node **dest);
 void	copy_stack(t_node *src, t_node **dest);
 void	deletlist(t_node *node);
 int	stacklen(t_node *head);
+int is_sorted(t_node *stackA);
+int find_min_rank(t_node *stackA);
 
 // Funcoes buble sort && Rank
 void				swap_nodes(t_node *a, t_node *b);
@@ -44,7 +47,10 @@ void	assign_ranks_to_stackA(t_node *stackA, t_node *stackSort);
 //Algoritm Chunck sorting
 int calculate_chunks(int num_elements);
 void assign_chunks(t_node *head);
-void   move_current_chunk_to_stackB(t_node **stackA, t_node **stackB, int current_chunk);
+void	move_all_but_smallest_chunk(t_node **stackA, t_node **stackB);
+void sort_with_moves(t_node **stackA);
+//void sort_single_chunk(t_node **stackA);
+//void   move_current_chunk_to_stackB(t_node **stackA, t_node **stackB, int current_chunk);
 
 // moves
 void				sa(t_node **head);

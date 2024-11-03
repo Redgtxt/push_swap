@@ -23,14 +23,14 @@ int	main(int argc, char *argv[])
 	t_node	*stackA;
 	t_node	*stackB;
 	t_node	*stackSort;
-	int		num_elements;
-	int		chunks;
-    int i;
+//	int		num_elements;
+//	int		chunks;
+  //  int i;
 	stackA = create_stackA(argc, argv);
 	stackB = create_empty_stack();
 	stackSort = create_empty_stack();
-	num_elements = stacklen(stackA);
-	chunks = calculate_chunks(num_elements) - 1;
+	//num_elements = stacklen(stackA);
+	//chunks = calculate_chunks(num_elements) - 1;
 	// Copia e ordena os ranks de StackA em StackSort
 	copy_stack(stackA, &stackSort);
 	assign_ranks(stackSort);
@@ -41,14 +41,17 @@ int	main(int argc, char *argv[])
 
     print_stack_chunks(stackA);
     
-    i = 0;
+    //i = 0;
+	move_all_but_smallest_chunk(&stackA,&stackB);
+	sort_with_moves(&stackA);
+	/*
     while (i <= chunks)
     {
 
     move_current_chunk_to_stackB(&stackA,&stackB,i);
     i++;
     }
-
+*/
 	// Loop para processar e mover cada chunk para StackB e então de volta para StackA
 	// Exibe o estado final das pilhas
 	 printf("-------------- Stack A--------------\n");
