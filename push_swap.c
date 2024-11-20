@@ -1,64 +1,51 @@
 #include "push_swap.h"
-
-t_node	*create_stackA(int argc, char *argv[])
-{
-	t_node	*head;
-
-	head = NULL;
-	if (argc - 1 <= 0)
-		write_error();
-	argv_convert_builder(argc, argv, &head);
-	return (head);
-}
-
-t_node	*create_empty_stack(void)
-{
-	t_node	*stackb;
-
-	stackb = NULL;
-	return (stackb);
-}
+/*
 int	main(int argc, char *argv[])
 {
-	t_node	*stackA;
-	t_node	*stackB;
-	t_node	*stackSort;
-//	int		num_elements;
-//	int		chunks;
-  //  int i;
-	stackA = create_stackA(argc, argv);
-	stackB = create_empty_stack();
-	stackSort = create_empty_stack();
-	//num_elements = stacklen(stackA);
-	//chunks = calculate_chunks(num_elements) - 1;
-	// Copia e ordena os ranks de StackA em StackSort
-	copy_stack(stackA, &stackSort);
-	assign_ranks(stackSort);
-	assign_ranks_to_stackA(stackA, stackSort);
-	deletlist(stackSort);
-	// Divide os elementos em grupos (chunks)
-	assign_chunks(stackA);
 
-    print_stack_chunks(stackA);
-    
-    //i = 0;
-	move_all_but_smallest_chunk(&stackA,&stackB);
-	sort_with_moves(&stackA);
-	/*
-    while (i <= chunks)
-    {
+	t_node	*a;
+	t_node	*b;
 
-    move_current_chunk_to_stackB(&stackA,&stackB,i);
-    i++;
-    }
-*/
-	// Loop para processar e mover cada chunk para StackB e então de volta para StackA
-	// Exibe o estado final das pilhas
-	 printf("-------------- Stack A--------------\n");
-	 print_stack_chunks(stackA);
-	printf("-------------- Stack B--------------\n");
-	 print_stack_chunks(stackB);
-	deletlist(stackA);
-	deletlist(stackB);
+	a = NULL;
+	b = NULL;
+
+  if(argc == 1 || (argc == 2 && !argv[1][0]))
+  {
+  	return (1);
+  }else if(argc == 2)
+    argv = ft_split(argv[1], ' ');
+
+
 	return (0);
+}
+*/
+#include <stdio.h>
+#include "libft/libft.h"
+
+int main(int argc, char **argv)
+{
+	char **split_argv = NULL;
+
+	if (argc == 1 || (argc == 2 && !argv[1][0]))
+		return (1);
+	else if (argc == 2)
+		split_argv = ft_split(argv[1], ' ');
+
+	if (argc > 2) // Vários argumentos passados diretamente
+	{
+		for (int i = 1; i < argc; i++)
+			printf("Arg %d: %s\n", i, argv[i]);
+	}
+	else if (split_argv) // Argumentos divididos por ft_split
+	{
+		for (int i = 0; split_argv[i]; i++)
+			printf("Split Arg %d: %s\n", i, split_argv[i]);
+
+		// Libere a memória alocada por ft_split, se necessário
+		for (int i = 0; split_argv[i]; i++)
+			free(split_argv[i]);
+		free(split_argv);
+	}
+
+	return 0;
 }

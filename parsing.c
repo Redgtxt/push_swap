@@ -1,3 +1,4 @@
+/*
 #include "push_swap.h"
 
 // Verifica se tem alguma letra
@@ -106,3 +107,4 @@ void	add_to_list(t_node **head, int content, int index)
 		temp->next = new_node;
 	}
 }
+*/
