@@ -1,5 +1,5 @@
 NAME = push_swap
-SRC = push_swap.c
+SRC = check_errors.c create_stack.c init_nodes.c main.c more_utils.c  push_swap_action.c  push.c  reverse_rotate.c rotate.c sort_tree.c  split.c   stack_utils.c swap.c 
 LIBFTDIR = ./libft
 LIBFT = $(LIBFTDIR)/libft.a
 OBJDIR = ./obj
