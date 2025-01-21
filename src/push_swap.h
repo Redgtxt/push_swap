@@ -1,0 +1,45 @@
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
+#include "../libft/libft.h"
+#include "stdbool.h"
+
+typedef struct s_node
+{
+    int data;
+    struct s_node *next;
+    struct s_node *prev;
+}t_node;
+
+//General Functions Utils
+void free_double_array(char *array[]);
+void print_double_array(char *array[]);
+void    write_error(void);
+
+//List Functions
+void    add_to_list(t_node **head, int value);
+void    deletlist(t_node *head);
+void print_stack(t_node *stack);
+bool	is_sorted(t_node *stack);
+
+void    argv_convert_builder(int argc, char *argv[], t_node **head);
+
+//Move Swap Functions
+void	sa(t_node **head, bool print);
+void sb(t_node **head, bool print);
+void ss(t_node **headA, t_node **headB, bool print);
+
+//Move Push Functions
+void pa(t_node **headA, t_node **headB, bool print);
+void pb(t_node **headA, t_node **headB, bool print);
+
+//Move Rotate Functions
+void ra(t_node **head, bool print);
+void rb(t_node **head, bool print);
+void rr(t_node **headA, t_node **headB, bool print);
+
+//Move Reverse Rotate Functions
+void rra(t_node **head, bool print);
+void rrb(t_node **head, bool print);
+void rrr(t_node **headA, t_node **headB, bool print);
+
+#endif
