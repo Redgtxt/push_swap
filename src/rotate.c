@@ -1,19 +1,24 @@
 #include "push_swap.h"
 
-//Rotate
-static void	rotate(t_node **head)
+static void rotate(t_node **head)
 {
-    t_node	*first;
-    t_node	*last;
+    t_node *first;
+    t_node *last;
 
     if (!head || !(*head) || !((*head)->next))
-        return ;
+        return;
+
     first = *head;
     last = *head;
+
     while (last->next)
         last = last->next;
+
     *head = first->next;
+    (*head)->prev = NULL;
+
     first->next = NULL;
+    first->prev = last;
     last->next = first;
 }
 

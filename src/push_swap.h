@@ -6,6 +6,11 @@
 typedef struct s_node
 {
     int data;
+    int index;
+    int push_cost;
+    bool above_median;
+    bool cheapest;
+    struct s_node *target_node;
     struct s_node *next;
     struct s_node *prev;
 }t_node;

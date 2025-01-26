@@ -1,17 +1,20 @@
 #include "push_swap.h"
 
-static void	reverse_rotate(t_node **head)
+static void reverse_rotate(t_node **head)
 {
-    t_node	*first;
-    t_node	*last;
+    t_node *first;
+    t_node *last;
 
     if (!head || !(*head) || !((*head)->next))
-        return ;
+        return;
+
     first = *head;
     while (first->next)
         first = first->next;
+
     last = first;
     first = *head;
+
     *head = last;
     last->prev->next = NULL;
     last->prev = NULL;

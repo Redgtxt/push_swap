@@ -16,20 +16,22 @@ void    add_to_list(t_node **head, int value)
     if (!*head)
     {
         *head = new_node;
-        return;
-    }
-    
+    }else
+    {
     current = *head;
-    while (current->next)
+      while (current->next)
         current = current->next;
         
     current->next = new_node;
     new_node->prev = current;
+    }
+    
+  
 }
-void    deletlist(t_node *head)
+void deletlist(t_node *head)
 {
-    t_node    *current;
-    t_node    *next;
+    t_node *current;
+    t_node *next;
 
     current = head;
     while (current)

@@ -5,19 +5,17 @@ static void push(t_node **dest, t_node **src)
     t_node *temp;
 
     if (!src || !(*src))
-        return ;
+        return;
+
     temp = *src;
     *src = (*src)->next;
     if (*src)
         (*src)->prev = NULL;
-    temp->next = NULL;
-    if (!*dest)
-    {
-        *dest = temp;
-        return ;
-    }
+
     temp->next = *dest;
-    (*dest)->prev = temp;
+    if (*dest)
+        (*dest)->prev = temp;
+
     *dest = temp;
 }
 

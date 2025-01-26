@@ -50,27 +50,21 @@ void print_stack(t_node *stack)
     temp = stack;
     while (temp)
     {
-            ft_printf(" Data: %d\n", temp->data);
-
+        ft_printf(" Data: %d\n", temp->data);
         temp = temp->next;
     }
 }
 
-bool	is_sorted(t_node *stack)
+bool is_sorted(t_node *stack)
 {
-	if (!stack || !stack->next)
-		return (true);
-	
+    if (!stack || !stack->next)
+        return (true);
 
-	// verificando se cada elemento é menor ou igual ao próximo
-	while (stack->next)
-	{
-		if (stack->data > stack->next->data)
-		{
-			return (false);
-		}
-		stack = stack->next;
-	}
-	ft_printf("Stack sorted Yupie\n");
-	return (true);
+    while (stack->next)
+    {
+        if (stack->data > stack->next->data)
+            return (false);
+        stack = stack->next;
+    }
+    return (true);
 }
