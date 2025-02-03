@@ -37,20 +37,23 @@ int main(int argc,char *argv[])
     stackA = create_stackA(argc, argv);
     stackB = create_empty_stack();
 
-    if(is_sorted(stackA))
+    if(!is_sorted(stackA))
     {
-        deletlist(stackA);
-        deletlist(stackB);
-        return (0);
-    }else
-    {
-        ft_printf("Stack A não está ordenada\n");
+        if(stacklen(stackA) == 2)
+        {
+            sa(&stackA, true);
+        }else if(stacklen(stackA) == 3)
+        {
+            sort_three(&stackA);
+        }else
+            sort_stacks(&stackA, &stackB);
     }
-    print_stack(stackA);
-    pb(&stackA,&stackB, true);
+
+    printf("-------------- Stack A--------------\n");;
     print_stack(stackA);
     printf("-------------- Stack B--------------\n");
 	print_stack(stackB); 
     deletlist(stackA);
+    deletlist(stackB);
     return (0);
 }

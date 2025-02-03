@@ -100,7 +100,8 @@ void    argv_convert_builder(int argc, char *argv[], t_node **head)
         split_argv = ft_split(argv[i], ' ');
         if (!split_argv || !split_argv[0])
         {
-            free_double_array(split_argv);
+            if(split_argv)
+                free_double_array(split_argv);
             write_error();
         }
         if (process_split_array(split_argv, head) == -1)

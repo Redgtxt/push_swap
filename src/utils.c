@@ -66,5 +66,6 @@ bool is_sorted(t_node *stack)
             return (false);
         stack = stack->next;
     }
+    ft_printf("Stack está ordenada\n");
     return (true);
 }

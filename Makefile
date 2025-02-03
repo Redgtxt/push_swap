@@ -1,7 +1,6 @@
 NAME = push_swap
 
-SRC = src/main.c src/utils.c src/syntax_checking.c src/list_functions.c src/swap.c src/push.c src/rotate.c src/reverse_rotate.c
-
+SRC = src/main.c src/utils.c src/syntax_checking.c src/list_functions.c src/swap.c src/push.c src/rotate.c src/reverse_rotate.c src/sort_three.c src/find_stuff.c src/init_nodes_a.c src/move_nodes.c
 LIBFTDIR = ./libft
 LIBFT = $(LIBFTDIR)/libft.a
 

@@ -42,3 +42,10 @@ void rrr(t_node **headA, t_node **headB, bool print)
     if (print == true)
         ft_printf("rrr\n");
 }
+void reverse_rotate_both(t_node **stack_a, t_node **stack_b,t_node *cheapest_node)
+{
+    while (*stack_b != cheapest_node->target_node && *stack_a != cheapest_node)
+        rrr(stack_a, stack_b, true);
+    current_index(*stack_a);
+    current_index(*stack_b);    
+}

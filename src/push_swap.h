@@ -25,7 +25,25 @@ void    add_to_list(t_node **head, int value);
 void    deletlist(t_node *head);
 void print_stack(t_node *stack);
 bool	is_sorted(t_node *stack);
+int	stacklen(t_node *head);
+t_node *find_min(t_node *stack);
+t_node *find_max(t_node *stack);
 
+//Sort
+void sort_three(t_node **stack_a);
+void sort_stacks(t_node **stack_a,t_node **stack_b);
+
+//Preparing for push
+void current_index(t_node *stack);
+void set_cheapest(t_node *stack);
+void init_nodes_a(t_node *stack_a,t_node *stack_b);
+
+//Move nodes
+void rotate_both(t_node **stack_a, t_node **stack_b,t_node *cheapest_node);
+void reverse_rotate_both(t_node **stack_a, t_node **stack_b,t_node *cheapest_node);
+void move_a_to_b(t_node **stack_a, t_node **stack_b);
+void init_nodes_b(t_node *stack_a,t_node *stack_b);
+void prep_for_push(t_node **stack, t_node *top_node,char stack_name);
 void    argv_convert_builder(int argc, char *argv[], t_node **head);
 
 //Move Swap Functions
