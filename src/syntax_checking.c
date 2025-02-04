@@ -20,7 +20,7 @@ static int    is_digit_str(char *str)
     return (0);
 }
 
-static int    ft_safe_atoi(char *str)
+static int    ft_safe_atoi(t_node *head, char **all_str, char *str)
 {
     int    i;
     int    neg;
@@ -37,11 +37,20 @@ static int    ft_safe_atoi(char *str)
             neg = -1;
         i++;
     }
+    if (!str[i]){
+        deletlist(head);
+        free_double_array(all_str);
+        write_error();
+    }
     while (str[i] >= '0' && str[i] <= '9')
     {
         num = (str[i] - '0') + (num * 10);
         if (num * neg > INT_MAX || num * neg < INT_MIN)
+        {
+            deletlist(head);
+            free_double_array(all_str);
             write_error();
+        }
         i++;
     }
     return (num * neg);
@@ -61,13 +70,15 @@ static int    check_duplicate(t_node *head, int num)
     return (0);
 }
 
-static int process_number(char *str, t_node **head)
+static int process_number(char **all_str, char *str, t_node **head)
 {
     int num;
 
     if (is_digit_str(str) == -1)
+    {
         return (-1);
-    num = ft_safe_atoi(str);
+    }
+    num = ft_safe_atoi(*head, all_str, str);
     if (check_duplicate(*head, num) == -1)
         return (-1);
     if (add_to_list(head, num) == -1) // Check add_to_list result
@@ -83,8 +94,10 @@ static int process_split_array(char **split_argv, t_node **head)
     j = 0;
     while (split_argv[j])
     {
-        if (process_number(split_argv[j], head) == -1)
+        if (process_number(split_argv, split_argv[j], head) == -1)
+        {
             return (-1);
+        }
         j++;
     }
     return (0);
@@ -103,6 +116,7 @@ void    argv_convert_builder(int argc, char *argv[], t_node **head)
         {
             if(split_argv)
                 free_double_array(split_argv);
+            deletlist(*head);
             write_error();
         }
         if (process_split_array(split_argv, head) == -1)

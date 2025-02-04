@@ -12,7 +12,7 @@ int add_to_list(t_node **head, int value)
 {
     t_node *new_node;
     t_node *last_node;
-
+    
     new_node = (t_node *)malloc(sizeof(t_node));
     if (!new_node)
         return -1;

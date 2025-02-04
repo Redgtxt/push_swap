@@ -6,7 +6,6 @@ t_node *create_stackA(int argc, char *argv[])
 
     head = NULL;
     argv_convert_builder(argc, argv, &head);
-
     if (!head)
         write_error();
 
@@ -50,3 +49,7 @@ int main(int argc,char *argv[])
     deletlist(stackB);
     return (0);
 }
+
+/* FAILED ERRORS
+valgrind ./push_swap "78 20 9" "10 -302131231231230"
+*/

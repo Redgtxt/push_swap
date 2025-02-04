@@ -14,7 +14,6 @@ void free_double_array(char *array[])
         array[i] = NULL;
         i++;
     }
-
     free(array);
 }
 
@@ -22,17 +21,17 @@ void    print_double_array(char *array[])
 {
 	int	i;
 
-	if (!array) 
+	if (!array)
 		return ;
 	i = 0;
-	while (array[i]) 
+	while (array[i])
 	{
-		ft_printf("%s\n", array[i]); 
+		ft_printf("%s\n", array[i]);
 		i++;
 	}
 }
 
-void    write_error(void)
+void write_error(void)
 {
     write(2, "Error\n", 6);
     exit(1);
