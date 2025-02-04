@@ -9,7 +9,7 @@ t_node *create_stackA(int argc, char *argv[])
 
     if (!head)
         write_error();
-        
+
     return (head);
 }
 
@@ -20,10 +20,7 @@ t_node	*create_empty_stack(void)
 	stackb = NULL;
 	return (stackb);
 }
-/*  TODO
-    [] Dar sort em 3
-    [] Dar sort em listas de numeros
-*/
+
 int main(int argc,char *argv[])
 {
     t_node *stackA;
@@ -49,10 +46,6 @@ int main(int argc,char *argv[])
             sort_stacks(&stackA, &stackB);
     }
 
-    printf("-------------- Stack A--------------\n");;
-    print_stack(stackA);
-    printf("-------------- Stack B--------------\n");
-	print_stack(stackB); 
     deletlist(stackA);
     deletlist(stackB);
     return (0);

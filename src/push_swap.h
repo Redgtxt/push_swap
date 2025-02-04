@@ -21,7 +21,7 @@ void print_double_array(char *array[]);
 void    write_error(void);
 
 //List Functions
-void    add_to_list(t_node **head, int value);
+int    add_to_list(t_node **head, int value);
 void    deletlist(t_node *head);
 void print_stack(t_node *stack);
 bool	is_sorted(t_node *stack);

@@ -70,7 +70,8 @@ static int process_number(char *str, t_node **head)
     num = ft_safe_atoi(str);
     if (check_duplicate(*head, num) == -1)
         return (-1);
-    add_to_list(head, num);
+    if (add_to_list(head, num) == -1) // Check add_to_list result
+        return (-1);
     return (0);
 }
 

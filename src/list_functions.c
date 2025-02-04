@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static t_node	*find_last(t_node *stack) 
+static t_node	*find_last(t_node *stack)
 {
 	if (!stack)
 		return (NULL);
@@ -8,18 +8,23 @@ static t_node	*find_last(t_node *stack)
 		stack = stack->next;
 	return (stack);
 }
-void add_to_list(t_node **head, int value)
+int add_to_list(t_node **head, int value)
 {
     t_node *new_node;
     t_node *last_node;
 
     new_node = (t_node *)malloc(sizeof(t_node));
     if (!new_node)
-        write_error();
+        return -1;
 
     new_node->data = value;
     new_node->next = NULL;
     new_node->prev = NULL;
+    new_node->index = 0;
+    new_node->push_cost = 0;
+    new_node->above_median = false;
+    new_node->cheapest = false;
+    new_node->target_node = NULL;
 
     if (!*head)
     {
@@ -31,6 +36,7 @@ void add_to_list(t_node **head, int value)
         last_node->next = new_node;
         new_node->prev = last_node;
     }
+    return 0;
 }
 
 void deletlist(t_node *head)
