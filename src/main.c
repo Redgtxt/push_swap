@@ -32,7 +32,6 @@ int main(int argc,char *argv[])
 
     stackA = create_stackA(argc, argv);
     stackB = create_empty_stack();
-
     if(!is_sorted(stackA))
     {
         if(stacklen(stackA) == 2)
@@ -44,12 +43,8 @@ int main(int argc,char *argv[])
         }else
             sort_stacks(&stackA, &stackB);
     }
-
     deletlist(stackA);
     deletlist(stackB);
     return (0);
 }
 
-/* FAILED ERRORS
-valgrind ./push_swap "78 20 9" "10 -302131231231230"
-*/

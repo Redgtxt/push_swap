@@ -20,9 +20,11 @@ static void move_b_to_a(t_node **stack_a, t_node **stack_b)
 }
 static void min_on_top(t_node **stack_a)
 {
-    while ((*stack_a)->data != find_min(*stack_a)->data)
+    t_node *min_node;
+
+    while ((*stack_a)->data != (min_node = find_min(*stack_a))->data)
     {
-        if(find_min(*stack_a)->above_median)
+        if (min_node->above_median)
             ra(stack_a, true);
         else
             rra(stack_a, true);

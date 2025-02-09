@@ -19,43 +19,6 @@ static int    is_digit_str(char *str)
     }
     return (0);
 }
-
-static int    ft_safe_atoi(t_node *head, char **all_str, char *str)
-{
-    int    i;
-    int    neg;
-    long    num;
-
-    i = 0;
-    neg = 1;
-    num = 0;
-    while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-        i++;
-    if (str[i] == '-' || str[i] == '+')
-    {
-        if (str[i] == '-')
-            neg = -1;
-        i++;
-    }
-    if (!str[i]){
-        deletlist(head);
-        free_double_array(all_str);
-        write_error();
-    }
-    while (str[i] >= '0' && str[i] <= '9')
-    {
-        num = (str[i] - '0') + (num * 10);
-        if (num * neg > INT_MAX || num * neg < INT_MIN)
-        {
-            deletlist(head);
-            free_double_array(all_str);
-            write_error();
-        }
-        i++;
-    }
-    return (num * neg);
-}
-
 static int    check_duplicate(t_node *head, int num)
 {
     t_node    *current;
@@ -81,7 +44,7 @@ static int process_number(char **all_str, char *str, t_node **head)
     num = ft_safe_atoi(*head, all_str, str);
     if (check_duplicate(*head, num) == -1)
         return (-1);
-    if (add_to_list(head, num) == -1) // Check add_to_list result
+    if (add_to_list(head, num) == -1) 
         return (-1);
     return (0);
 }

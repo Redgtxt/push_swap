@@ -73,7 +73,6 @@ static void set_target_b(t_node *stack_a,t_node *stack_b)
             stack_b->target_node = target_node;
         stack_b = stack_b->next;
     }
-    
 }
 void init_nodes_b(t_node *stack_a,t_node *stack_b)
 {

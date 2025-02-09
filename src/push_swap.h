@@ -20,6 +20,7 @@ void free_double_array(char *array[]);
 void print_double_array(char *array[]);
 void    write_error(void);
 
+int ft_safe_atoi(t_node *head, char **all_str, char *str);
 //List Functions
 int    add_to_list(t_node **head, int value);
 void    deletlist(t_node *head);

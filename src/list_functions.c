@@ -25,11 +25,8 @@ int add_to_list(t_node **head, int value)
     new_node->above_median = false;
     new_node->cheapest = false;
     new_node->target_node = NULL;
-
     if (!*head)
-    {
         *head = new_node;
-    }
     else
     {
         last_node = find_last(*head);
