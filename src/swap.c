@@ -1,45 +1,53 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   swap.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hguerrei < hguerrei@student.42lisboa.co    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/10 13:43:40 by hguerrei          #+#    #+#             */
+/*   Updated: 2025/02/10 13:43:41 by hguerrei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static void swap(t_node **head)
+static void	swap(t_node **head)
 {
-    t_node *first;
-    t_node *second;
+	t_node	*first;
+	t_node	*second;
 
-    if (!head || !(*head) || !((*head)->next))
-        return;
-
-    first = *head;
-    second = first->next;
-
-    first->next = second->next;
-    if (second->next)
-        second->next->prev = first;
-
-    second->next = first;
-    second->prev = first->prev;
-    first->prev = second;
-
-    *head = second;
+	if (!head || !(*head) || !((*head)->next))
+		return ;
+	first = *head;
+	second = first->next;
+	first->next = second->next;
+	if (second->next)
+		second->next->prev = first;
+	second->next = first;
+	second->prev = first->prev;
+	first->prev = second;
+	*head = second;
 }
 
-void sa(t_node **head, bool print)
+void	sa(t_node **head, bool print)
 {
-    swap(head);
-    if (print == true)
-        ft_printf("sa\n");
+	swap(head);
+	if (print == true)
+		ft_printf("sa\n");
 }
 
-void sb(t_node **head, bool print)
+void	sb(t_node **head, bool print)
 {
-    swap(head);
-    if (print == true)
-        ft_printf("sb\n");
+	swap(head);
+	if (print == true)
+		ft_printf("sb\n");
 }
 
-void ss(t_node **headA, t_node **headB, bool print)
+void	ss(t_node **headA, t_node **headB, bool print)
 {
-    swap(headA);
-    swap(headB);
-    if (print == true)
-        ft_printf("ss\n");
+	swap(headA);
+	swap(headB);
+	if (print == true)
+		ft_printf("ss\n");
 }

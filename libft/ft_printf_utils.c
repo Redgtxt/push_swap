@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hguerrei < hguerrei@student.42lisboa.co    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/10 13:57:31 by hguerrei          #+#    #+#             */
+/*   Updated: 2025/02/10 13:58:18 by hguerrei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
@@ -29,6 +40,7 @@ int	ft_putptr_base(unsigned long long ptr, char *base, int f)
 	count++;
 	return (count);
 }
+
 int	ft_putstr_printf(char *s)
 {
 	int	i;
