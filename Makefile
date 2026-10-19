@@ -35,3 +35,4 @@ fclean: clean
 	@$(MAKE) -C $(LIBFTDIR) fclean
 
 re: fclean all
+.PHONY: all clean fclean re
