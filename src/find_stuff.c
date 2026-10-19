@@ -19,7 +19,8 @@ t_node	*find_min(t_node *stack)
 
 	if (!stack)
 		return (NULL);
-	min = INT_MAX;
+	min = stack->data;
+	min_node = stack;
 	while (stack)
 	{
 		if (stack->data < min)
@@ -39,7 +40,8 @@ t_node	*find_max(t_node *stack)
 
 	if (!stack)
 		return (NULL);
-	max = INT_MIN;
+	max = stack->data;
+	max_node = stack;
 	while (stack)
 	{
 		if (stack->data > max)

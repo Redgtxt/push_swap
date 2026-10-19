@@ -41,7 +41,7 @@ static void	set_target_a(t_node *stack_a, t_node *stack_b)
 
 	while (stack_a)
 	{
-		best_match_index = INT_MIN;
+		best_match_index = LONG_MIN;
 		current_b = stack_b;
 		while (current_b)
 		{
@@ -53,7 +53,7 @@ static void	set_target_a(t_node *stack_a, t_node *stack_b)
 			}
 			current_b = current_b->next;
 		}
-		if (best_match_index == INT_MIN)
+		if (best_match_index == LONG_MIN)
 			stack_a->target_node = find_max(stack_b);
 		else
 			stack_a->target_node = target_node;

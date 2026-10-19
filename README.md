@@ -118,14 +118,14 @@ Keeping `target_node`, `push_cost` and `above_median` on the node itself separat
 
 ## Results
 
-Measured over every order of three numbers and over random inputs drawn from the full `int` range, with every output replayed by an independent checker to confirm the stack ends sorted:
+Measured over every order of three numbers and over random inputs drawn from the full `int` range, with every output replayed by an independent checker to confirm the stack ends sorted. A further 3,000 random inputs of 4 to 100 numbers, each containing both `INT_MIN` and `INT_MAX`, all sorted correctly too:
 
 | Size | Runs | Min | Average | Max | Subject limit |
 | --- | --- | --- | --- | --- | --- |
 | 3 | all 6 orders | 0 | 1.2 | 2 | 3 |
 | 5 | 500 | 0 | 8 | 11 | 12 |
-| 100 | 500 | 520 | 586 | 659 | 700 |
-| 500 | 200 | 5,079 | 5,428 | 5,758 | 5,500 |
+| 100 | 500 | 514 | 588 | 662 | 700 |
+| 500 | 200 | 5,035 | 5,405 | 5,820 | 5,500 |
 
 All runs sorted correctly. 100 numbers stay under the top-grade limit every time; 500 numbers average under it but go over in roughly a quarter of runs. A 500-number sort takes about 0.09 s, and Valgrind reports no leaks, on success or on error.
 
@@ -158,6 +158,7 @@ All runs sorted correctly. 100 numbers stay under the top-grade limit every time
 - That "the best sorting algorithm" depends on what is being counted. With free comparisons and expensive moves, the right tool was a greedy search over moves, not a textbook sort.
 - Doubly linked lists with real pointer surgery — every rotation and push rewires `next` and `prev` on up to four nodes, and an off-by-one leaves a cycle or a dangling `prev`.
 - Measuring instead of guessing: an independent checker and a few hundred random runs showed where the algorithm stood against the limits, and where it did not.
+- Sentinels must sit outside the range of real values. The target search started from `INT_MIN` and `INT_MAX` as "nothing found yet", so a real `INT_MIN` or `INT_MAX` on the stack was mistaken for "nothing found" and sent to the wrong place — inputs with both extremes came out unsorted more often than not. Plain random tests almost never hit those exact values; a fuzzer that forced them in found it at once. The searches now use `LONG_MIN` and `LONG_MAX`, which no `int` can equal.
 - Validation as its own problem: overflow, duplicates and malformed tokens have to be caught before the first instruction is printed, and every error path has to free what was already built.
 
 ---
